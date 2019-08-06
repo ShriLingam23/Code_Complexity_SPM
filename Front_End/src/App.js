@@ -42,7 +42,7 @@ function App() {
                   <TinyEditor/>
                   <hr/>
                   <h4>File Picker Option</h4>
-                  <FilePicker />
+                  {/* <FilePicker /> */}
                 </div>
                 {/* <!-- /.section-title --> */}
               </div>
