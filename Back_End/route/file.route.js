@@ -20,37 +20,9 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
     console.log(data)
     var currentData = data.toString();
     console.log(currentData)
-    // new_file.file.data = fs.readFileSync(req.file.path);
-    // new_file.file.contentType = req.file.mimetype;
-    // console.log(new_file.file.contentType)
-
-    // new_file.file.contentType = 'image/png';
-
-    // console.log(req.file.path)
-
-    //Saving the file
-    // new_file.save();
-    // console.log(new_file)
 
     res.send({ id: "Added" });
 })
-
-//Read Course details
-router.route('/uploadfile').get(function (req, res) {
-
-    File.find().exec((err, result) => {
-
-        if (err)
-            return console.log(err)
-
-        console.log(result)
-
-        res.contentType('json');
-        res.send(result)
-
-    })
-})
-
 
 
 module.exports = router;
