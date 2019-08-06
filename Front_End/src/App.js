@@ -8,6 +8,7 @@ import LogoGather from './components/Home/LogoGatherer';
 import TinyEditor from './components/Home/TinyEditor';
 import FilePicker from './components/Home/FilePicker';
 import FilePondUploader from './components/Home/FilePondUploader';
+import Footer from './components/Home/Footer';
 
 function App() {
   return (
@@ -41,18 +42,16 @@ function App() {
                   <h4>File Picker Option</h4>
                   <TinyEditor/>
                   <hr/>
-                  <h4>File Picker Option</h4>
+                  {/* <h4>File Picker Option</h4> */}
                   {/* <FilePicker /> */}
                 </div>
                 {/* <!-- /.section-title --> */}
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-              Created for <a href="https://www.sliit.lk/" target="_blank">SLIIT &copy;2019</a>
-            </div></div>
         </div>
+        <hr/>
+        <Footer/>
       </div>
     </div>
      
