@@ -28,7 +28,7 @@ function App() {
       {/* </LogoGather> */}
       {/* <!-- /.page-header-->
       <!-- news --> */}
-      <div class="card-section"style={{backgroundColor:'#59265'}} >
+      <div class="card-section">
         <div class="container">
           <div class="card-block bg-white mb30">
             <div class="row">
