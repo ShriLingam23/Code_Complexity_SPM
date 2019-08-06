@@ -13,22 +13,22 @@ import Footer from './components/Home/Footer';
 function App() {
   return (
     <div className="App" >
-      <LogoGather>
+      {/* <LogoGather> */}
       <div class="page-header">
         <div class="container">
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="page-caption">
-                <h1 class="page-title">Hike Pageheader</h1>
+                <h1 class="page-title">Code Complexity Measeurer</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </LogoGather>
+      {/* </LogoGather> */}
       {/* <!-- /.page-header-->
       <!-- news --> */}
-      <div class="card-section" >
+      <div class="card-section"style={{backgroundColor:'#59265'}} >
         <div class="container">
           <div class="card-block bg-white mb30">
             <div class="row">
@@ -41,7 +41,7 @@ function App() {
                   <hr/>
                   <h4>File Picker Option</h4>
                   <TinyEditor/>
-                  <hr/>
+                  {/* <hr/> */}
                   {/* <h4>File Picker Option</h4> */}
                   {/* <FilePicker /> */}
                 </div>
