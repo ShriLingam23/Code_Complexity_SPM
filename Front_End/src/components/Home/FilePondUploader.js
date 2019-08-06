@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 // Import React FilePond
 import { FilePond, registerPlugin } from "react-filepond";
 
@@ -23,12 +23,12 @@ class FilePondUploader extends Component {
       // Set initial files, type 'local' means this is a file
       // that has already been uploaded to the server (see docs)
       files: [
-        {
-          source: "index.html",
-          options: {
-            type: "local"
-          }
-        }
+        // {
+        //   source: "index.html",
+        //   options: {
+        //     type: "local"
+        //   }
+        // }
       ]
     };
   }
@@ -37,23 +37,37 @@ class FilePondUploader extends Component {
     console.log("FilePond instance has initialised", this.pond);
   }
 
+  handlePondFile(error, file) {
+    if (error) {
+      console.log('Oh no');
+      return;
+    }
+    const fileId = JSON.parse(file.serverId)
+    console.log('File added', fileId.id);
+    this.setState({ id: fileId.id })
+    console.log(this.state.id)
+
+  }
+
   render() {
     return (
       <div className="App">
         {/* Pass FilePond properties as attributes */}
         <FilePond
-          ref={ref => (this.pond = ref)}
-          files={this.state.files}
-          allowMultiple={true}
-          maxFiles={3}
-          server="/api"
-          oninit={() => this.handleInit()}
-          onupdatefiles={fileItems => {
-            // Set currently active file objects to this.state
-            this.setState({
-              files: fileItems.map(fileItem => fileItem.file)
-            });
-          }}
+          // ref={ref => (this.pond = ref)}
+          // files={this.state.files}
+          // allowMultiple={true}
+          // maxFiles={3}
+          name={"file"}
+          server="http://localhost:4000/admin/file/uploadfile"
+          onprocessfile={this.handlePondFile.bind(this)}
+        // oninit={() => this.handleInit()}
+        // onupdatefiles={fileItems => {
+        //   // Set currently active file objects to this.state
+        //   this.setState({
+        //     files: fileItems.map(fileItem => fileItem.file)
+        //   });
+        // }}
         />
       </div>
     );
