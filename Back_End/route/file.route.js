@@ -18,7 +18,7 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
 
     var data=fs.readFileSync(req.file.path);
     console.log(data)
-    var currentData = data.toString().split(/(?:\r\n|\r|\n)/g);
+    var currentData = data.toString();
     console.log(currentData)
     // new_file.file.data = fs.readFileSync(req.file.path);
     // new_file.file.contentType = req.file.mimetype;
