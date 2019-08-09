@@ -32,7 +32,7 @@ class Footer extends Component {
 
                                 <div className="row py-2">
                                     <div className="col-sm-3 hidden-md-down">
-                                        <FontAwesomeIcon icon={faAddressCard} className="bg-circle bg-info" />
+                                        <FontAwesomeIcon icon={faAddressCard} class="bg-circle bg-info" />
                                     </div>
                                     <div className="col-sm-9">
                                         <h4>Contact us</h4>
@@ -41,11 +41,11 @@ class Footer extends Component {
                                 </div>
                                 <div className="row py-2">
                                     <div className="col-sm-3 hidden-md-down">
-                                        <FontAwesomeIcon icon={faLaptop} className="bg-circle bg-info" />
+                                        <FontAwesomeIcon icon={faLaptop} class="bg-circle bg-info" />
                                     </div>
                                     <div className="col-sm-9">
                                         <h4>Cookie policy</h4>
-                                        <p className=" ">We use <a className=" " href="/# ">cookies </a></p>
+                                        <p className=" ">We use <a class=" " href="/# ">cookies </a></p>
                                     </div>
                                 </div>
 
@@ -55,7 +55,7 @@ class Footer extends Component {
 
                                 <div className="row py-2">
                                     <div className="col-sm-3 hidden-md-down">
-                                        <FontAwesomeIcon icon={faFilePdf} className="bg-circle bg-danger" />
+                                        <FontAwesomeIcon icon={faFilePdf} class="bg-circle bg-danger" />
                                     </div>
                                     <div className="col-sm-9">
                                         <h4>Download pdf</h4>
@@ -66,7 +66,7 @@ class Footer extends Component {
 
                                 <div className="row py-2">
                                     <div className="col-sm-3 hidden-md-down">
-                                        <FontAwesomeIcon icon={faInfo} className="bg-circle bg-warning" />
+                                        <FontAwesomeIcon icon={faInfo} class="bg-circle bg-warning" />
                                     </div>
                                     <div className="col-sm-9">
                                         <h4>Info</h4>
@@ -90,9 +90,9 @@ class Footer extends Component {
 
                             <div className="col-md-3">
                                 <div className="d-inline-block">
-                                    <FontAwesomeIcon icon={faFacebookF} className="text-white bg-circle d-inline-block" size={"10px"} />
-                                    <FontAwesomeIcon icon={faTwitter} className="text-white bg-circle d-inline-block" />
-                                    <FontAwesomeIcon icon={faLinkedinIn} className="text-white bg-circle d-inline-block" />
+                                    <FontAwesomeIcon icon={faFacebookF} class="text-white bg-circle d-inline-block" size={"10px"} />
+                                    <FontAwesomeIcon icon={faTwitter} class="text-white bg-circle d-inline-block" />
+                                    <FontAwesomeIcon icon={faLinkedinIn} class="text-white bg-circle d-inline-block" />
                                 </div>
                             </div>
                         </div>
