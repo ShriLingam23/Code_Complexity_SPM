@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const prettier = require("prettier");
 const complexityByType = require('../Complexity_Algorithm/ComplexityByType')
 
 const multer = require('multer');
@@ -26,7 +27,7 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
     console.log(currentData)
 
     //Indentating properly using Prettier
-    const formattedText = prettier.format(text, {
+    const formattedText = prettier.format(currentData, {
         parser: "java",
         tabWidth: 2
     });
