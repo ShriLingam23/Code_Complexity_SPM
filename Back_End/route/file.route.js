@@ -25,8 +25,14 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
     var currentData = data.toString();
     console.log(currentData)
 
+    //Indentating properly using Prettier
+    const formattedText = prettier.format(text, {
+        parser: "java",
+        tabWidth: 2
+    });
+
     //Each line into array
-    var lineArr = currentData.split(/(?:\r\n|\r|\n)/g);
+    var lineArr = formattedText.split(/(?:\r\n|\r|\n)/g);
 
     complexityByType(lineArr)
     // console.log(complexityByType(lineArr) )
