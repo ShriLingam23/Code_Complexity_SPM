@@ -38,7 +38,7 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
     complexityByType(lineArr)
     // console.log(complexityByType(lineArr) )
 
-    res.send({ id: "Added" });
+    res.send({ id: "Added" ,content: formattedText});
 })
 
 

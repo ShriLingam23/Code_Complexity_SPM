@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 
-import prettier from 'prettier';
 import Highlight from 'react-highlight'
 
 import 'highlight.js/styles/github.css'
@@ -16,12 +15,14 @@ class FilePondUploader extends Component {
     this.state = {
       files: [ ],
       content :'',
+      formatedContent:'',
       show:false
 
     };
 
     this.handleFileChoosen = this.handleFileChoosen.bind(this);
     this.showContent = this.showContent.bind(this);
+    this.showFormatedContent = this.showFormatedContent.bind(this);
 
   }
 
@@ -35,6 +36,9 @@ class FilePondUploader extends Component {
       return;
     }
     const fileId = JSON.parse(file.serverId)
+    this.setState({
+      formatedContent:fileId.content
+    })
     console.log('File added', fileId.id);
     
 
@@ -64,11 +68,27 @@ class FilePondUploader extends Component {
   }
 
   showContent(){
-    if(this.state.show){
+    if(this.state.content!=''){
       return(
         <div>
+          <h4 style={{marginLeft:'150px'}}>Input File Content</h4>
+          <hr className="col mb-3"/>
           <Highlight language="java">
           {this.state.content}
+          </Highlight>
+        </div>
+      )
+    }
+  }
+
+  showFormatedContent(){
+    if(this.state.formatedContent!=''){
+      return(
+        <div>
+          <h4 style={{marginLeft:'150px'}}>Formated File Content</h4>
+          <hr className="col mb-3"/>
+          <Highlight language="java">
+          {this.state.formatedContent}
           </Highlight>
         </div>
       )
@@ -97,8 +117,9 @@ class FilePondUploader extends Component {
           }}
         />
 
-        <hr/>
         {this.showContent()}
+
+        {this.showFormatedContent()}
       </div>
     );
   }
