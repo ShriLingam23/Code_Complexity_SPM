@@ -50,11 +50,6 @@ class FilePondUploader extends Component {
     this.fileReader.onload = (e) => {
       const formattedText = this.fileReader.result;
 
-      // const formattedText = prettier.format(content, {
-      //   parser: "babel",
-      //   tabWidth: 2
-      // });
-
       console.log(formattedText)
       
       this.setState({
@@ -95,6 +90,14 @@ class FilePondUploader extends Component {
     }
   }
 
+  clearContent(){
+    this.setState({
+      content:"",
+      formatedContent:""
+    })
+  }
+
+
   
   render() {
     
@@ -113,8 +116,11 @@ class FilePondUploader extends Component {
               files: fileItems.map(fileItem => fileItem.file)
             });
 
-            this.handleFileChoosen(fileItems[0].file)
+            if(fileItems.length!=0){
+              this.handleFileChoosen(fileItems[0].file)
+            }
           }}
+          onremovefile={this.clearContent.bind(this)}
         />
 
         {this.showContent()}
