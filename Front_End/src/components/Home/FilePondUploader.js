@@ -5,6 +5,7 @@ import "filepond/dist/filepond.min.css";
 import Highlight from 'react-highlight'
 
 import 'highlight.js/styles/github.css'
+import TableDisplay from './TableDisplay';
 
 
 class FilePondUploader extends Component {
@@ -16,7 +17,10 @@ class FilePondUploader extends Component {
       files: [],
       content: '',
       formatedContent: '',
-      show: false
+      Cs:[],
+      Ctc:[],
+      Cnc:[],
+      Ci:[]
 
     };
 
@@ -37,7 +41,11 @@ class FilePondUploader extends Component {
     }
     const fileId = JSON.parse(file.serverId)
     this.setState({
-      formatedContent: fileId.content
+      formatedContent: fileId.content,
+      Cs:fileId.cs,
+      Ctc:fileId.ctc, 
+      Cnc:fileId.cnc, 
+      Ci:fileId.ci
     })
     console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
 
@@ -66,7 +74,7 @@ class FilePondUploader extends Component {
     if (this.state.content != '') {
       return (
         <div>
-          <h4 style={{ marginLeft: '150px' }}>Input File Content</h4>
+          <h4 style={{ marginLeft: '350px' }}>Input File Content</h4>
           <hr className="col mb-3" />
           <Highlight language="java">
             {this.state.content}
@@ -80,7 +88,14 @@ class FilePondUploader extends Component {
     if (this.state.formatedContent != '') {
       return (
         <div>
-          <h4 style={{ marginLeft: '150px' }}>Formated File Content</h4>
+          
+          <TableDisplay 
+            content={this.state.formatedContent} 
+            Cs={this.state.Cs}
+            Ctc={this.state.Ctc}
+            Cns={this.state.Cns}
+            Ci={this.state.Ci}/>
+          <h4 style={{ marginLeft: '350px' }}>Formated File Content</h4>
           <hr className="col mb-3" />
           <Highlight language="java">
             {this.state.formatedContent}
