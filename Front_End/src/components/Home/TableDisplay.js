@@ -16,11 +16,8 @@ class TableDisplay extends Component {
     }
 
     fillRow() {
+        console.log(this.state.Cnc)
         var lineArr = this.state.content.split(/(?:\r\n|\r|\n)/g);
-        // var resultArr = []
-        // for (i = 0; i < lineArr.length; i++) {
-
-        // }
         var i = 0;
         return lineArr.map(line => {
             i++;
@@ -32,6 +29,8 @@ class TableDisplay extends Component {
                     <td>{this.state.Ctc[i-1]}</td>
                     <td>{this.state.Cnc[i-1]}</td>
                     <td>{this.state.Ci[i-1]}</td>
+                    <td>{this.state.Ctc[i-1]+this.state.Cnc[i-1]+this.state.Ci[i-1]}</td>
+                    <td>{(this.state.Ctc[i-1]+this.state.Cnc[i-1]+this.state.Ci[i-1])*this.state.Cs[i-1]}</td>
                 </tr>
             )
         })
@@ -57,6 +56,8 @@ class TableDisplay extends Component {
                                     <th class="col-md-2">Ctc</th>
                                     <th class="col-md-2">Cnc</th>
                                     <th class="col-md-2">Ci</th>
+                                    <th class="col-md-2">Tw</th>
+                                    <th class="col-md-2">Cps</th>
                                 </tr>
                             </thead>
                             <tbody>

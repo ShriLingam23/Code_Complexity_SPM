@@ -47,7 +47,7 @@ class FilePondUploader extends Component {
       Cnc:fileId.cnc, 
       Ci:fileId.ci
     })
-    console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
+    // console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
 
 
   }
@@ -93,7 +93,7 @@ class FilePondUploader extends Component {
             content={this.state.formatedContent} 
             Cs={this.state.Cs}
             Ctc={this.state.Ctc}
-            Cns={this.state.Cns}
+            Cnc={this.state.Cnc}
             Ci={this.state.Ci}/>
           <h4 style={{ marginLeft: '350px' }}>Formated File Content</h4>
           <hr className="col mb-3" />
