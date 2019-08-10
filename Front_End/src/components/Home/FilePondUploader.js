@@ -93,7 +93,8 @@ class FilePondUploader extends Component {
   clearContent(){
     this.setState({
       content:"",
-      formatedContent:""
+      formatedContent:"",
+      files:[]
     })
   }
 
@@ -114,11 +115,12 @@ class FilePondUploader extends Component {
             // Set currently active file objects to this.state
             this.setState({
               files: fileItems.map(fileItem => fileItem.file)
+            },()=>{
+              if(this.state.files.length>0)
+                this.handleFileChoosen(fileItems[0].file)
             });
 
-            if(fileItems.length!=0){
-              this.handleFileChoosen(fileItems[0].file)
-            }
+            
           }}
           onremovefile={this.clearContent.bind(this)}
         />
