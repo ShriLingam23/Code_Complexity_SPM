@@ -174,7 +174,7 @@ class LogoGather extends React.Component {
             <h1 className="text-danger">We are creative</h1>
             <h3 >Because we are from <b>SLIIT</b></h3>
           </hgroup>
-          <button class="btn btn-hero btn-lg" role="button">See all features</button>
+          <button class="btn btn-hero btn-lg" role="button">Visit SLIIT!!!</button>
         </div>
         <TweenOne
           animation={this.state.boxAnim}
