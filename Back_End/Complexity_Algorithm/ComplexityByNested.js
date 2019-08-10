@@ -1,27 +1,27 @@
 
-var complexityByNested = function(lineArr){
+var complexityByNested = function (lineArr) {
 
-    var ctc_arr =[];
+    var ctc_arr = [];
 
-  
-    for(i=0;i<lineArr.length;i++){
-        var count =0;
-       
 
-        if(lineArr[i].includes("if")) {
-            count++;     
+    for (i = 0; i < lineArr.length; i++) {
+        var count = 0;
+
+
+        if (lineArr[i].includes("if")) {
+            count++;
             console.log(count)
 
-            if(lineArr[i].includes("if") || lineArr[i].includes("for")) {
+            if (lineArr[i].includes("if") || lineArr[i].includes("for")) {
                 var ch = lineArr[i].split('');
-                for(x=0 ; x<ch.length;x++) {
-                    if(ch[x]=='{') {
+                for (x = 0; x < ch.length; x++) {
+                    if (ch[x] == '{') {
                         count++;
                         x++;
                     }
-                     else if(ch[x]=='}') {
-                            if (count > 0) {
-                                --count;
+                    else if (ch[x] == '}') {
+                        if (count > 0) {
+                            --count;
                         }
                         else {
                             count;
@@ -33,19 +33,19 @@ var complexityByNested = function(lineArr){
         }
 
         else if (lineArr[i].includes("for")) {
-            count++;     
+            count++;
             console.log(count)
 
-            if(lineArr[i].includes("if") || lineArr[i].includes("for")) {
+            if (lineArr[i].includes("if") || lineArr[i].includes("for")) {
                 var ch = lineArr[i].split('');
-                for(x=0 ; x<ch.length;x++) {
-                    if(ch[x]=='{') {
+                for (x = 0; x < ch.length; x++) {
+                    if (ch[x] == '{') {
                         count++;
                         x++;
                     }
-                     else if(ch[x]=='}') {
-                            if (count > 0) {
-                                --count;
+                    else if (ch[x] == '}') {
+                        if (count > 0) {
+                            --count;
                         }
                         else {
                             count;
@@ -55,18 +55,18 @@ var complexityByNested = function(lineArr){
                 console.log(count)
             }
         }
-        
+
         else if (lineArr[i].includes("else")) {
-             {
+            {
                 var ch = lineArr[i].split('');
-                for(x=0 ; x<ch.length;x++) {
-                    if(ch[x]=='{') {
+                for (x = 0; x < ch.length; x++) {
+                    if (ch[x] == '{') {
                         count++;
                         x++;
                     }
-                     else if(ch[x]=='}') {
-                            if (count > 0) {
-                                --count;
+                    else if (ch[x] == '}') {
+                        if (count > 0) {
+                            --count;
                         }
                         else {
                             count;
@@ -76,19 +76,13 @@ var complexityByNested = function(lineArr){
                 console.log(count)
             }
         }
-
-       
-    
-
-
-
         ctc_arr.push(count)
 
     }
 
-    // return ctc_arr;
-    console.log(ctc_arr,ctc_arr.length)
+    console.log("Complexity By Nested", ctc_arr, ctc_arr.length)
+    return ctc_arr;
 
-} 
+}
 
 module.exports = complexityByNested;

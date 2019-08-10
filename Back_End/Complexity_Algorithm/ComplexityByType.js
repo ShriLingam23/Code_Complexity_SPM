@@ -1,18 +1,18 @@
 
-var complexityByType = function(lineArr){
+var complexityByType = function (lineArr) {
 
-    var ctc_arr =[];
+    var ctc_arr = [];
 
-    for(i=0;i<lineArr.length;i++){
-        var count =0;
-        if(lineArr[i].includes("if")) {
+    for (i = 0; i < lineArr.length; i++) {
+        var count = 0;
+        if (lineArr[i].includes("if")) {
             count++;
             // console.log(count)
-            if(lineArr[i].includes("&") || lineArr[i].includes("|")) {
+            if (lineArr[i].includes("&") || lineArr[i].includes("|")) {
                 var ch = lineArr[i].split('');
-                for(x=0 ; x<ch.length;x++) {
-                    if(ch[x]=='&' || ch[x]=='|') {
-                        if(ch[x+1]=='&' || ch[x]=='|') {
+                for (x = 0; x < ch.length; x++) {
+                    if (ch[x] == '&' || ch[x] == '|') {
+                        if (ch[x + 1] == '&' || ch[x] == '|') {
                             count++;
                             x++;
                         } else {
@@ -22,73 +22,73 @@ var complexityByType = function(lineArr){
                 }
                 // console.log(count)
             }
-        } else if(lineArr[i].includes("for") || lineArr[i].includes("while")|| lineArr[i].includes("do") ) {
-            count+=2;
+        } else if (lineArr[i].includes("for") || lineArr[i].includes("while") || lineArr[i].includes("do")) {
+            count += 2;
             // console.log(count)
-            if(lineArr[i].includes("&") || lineArr[i].includes("|")) {
+            if (lineArr[i].includes("&") || lineArr[i].includes("|")) {
                 var ch = lineArr[i].split('');
-                for(x=0 ; x<ch.length ; x++) {
-                    if(ch[i]=='&' || ch[i]=='|') {
-                        if(ch[i+1]=='&' || ch[i]=='|') {
-                            count+=2;
+                for (x = 0; x < ch.length; x++) {
+                    if (ch[i] == '&' || ch[i] == '|') {
+                        if (ch[i + 1] == '&' || ch[i] == '|') {
+                            count += 2;
                             i++;
                         } else {
-                            count+=2;
+                            count += 2;
                         }
                     }
                 }
                 // console.log(count)
             }
-        } else if(lineArr[i].includes("catch")) {
+        } else if (lineArr[i].includes("catch")) {
             count++;
 
-        } else if(lineArr[i].includes("switch") && lineArr[i].includes("(") && lineArr[i].includes(")")) {
-            
+        } else if (lineArr[i].includes("switch") && lineArr[i].includes("(") && lineArr[i].includes(")")) {
+
             var caseCount = 0
 
-            if(lineArr[i].includes("case"))
+            if (lineArr[i].includes("case"))
                 caseCount++;
 
-            var checkArr =[]
+            var checkArr = []
 
             //Loop till end of programme assuming switch continue
-            for(s=i;s<lineArr.length;s++){
+            for (s = i; s < lineArr.length; s++) {
 
                 var charArr = lineArr[s].split('');
 
                 //looping through each character
-                for(c=0;c<charArr.length;c++){
+                for (c = 0; c < charArr.length; c++) {
 
-                    if(charArr[c]=='{')
+                    if (charArr[c] == '{')
                         checkArr.push('{')
-                    else if(charArr[c]=='}'){
-                        if(checkArr.length!=0){
+                    else if (charArr[c] == '}') {
+                        if (checkArr.length != 0) {
                             checkArr.pop()
 
-                            if(checkArr.length==0)
+                            if (checkArr.length == 0)
                                 break;
                         }
-                            
+
                     }
                 }
 
-                if(checkArr.length==0)
+                if (checkArr.length == 0)
                     break;
-                    
+
 
             }
 
-            count+=caseCount;
-            
+            count += caseCount;
+
         }
 
         ctc_arr.push(count)
 
     }
 
-    // return ctc_arr;
-    console.log(ctc_arr,ctc_arr.length)
+    console.log("Complexity By Type", ctc_arr, ctc_arr.length)
+    return ctc_arr;
 
-} 
+}
 
 module.exports = complexityByType;
