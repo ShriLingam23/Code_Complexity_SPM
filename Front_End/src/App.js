@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Assets/css/Home.css';
 import './Assets/css/LogoGather.css';
+import './Assets/css/Header.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import LogoGather from './components/Home/LogoGatherer';
