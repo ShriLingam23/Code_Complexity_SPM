@@ -8,15 +8,15 @@ import 'highlight.js/styles/github.css'
 
 
 class FilePondUploader extends Component {
-  
+
   constructor(props) {
     super(props);
 
     this.state = {
-      files: [ ],
-      content :'',
-      formatedContent:'',
-      show:false
+      files: [],
+      content: '',
+      formatedContent: '',
+      show: false
 
     };
 
@@ -37,75 +37,75 @@ class FilePondUploader extends Component {
     }
     const fileId = JSON.parse(file.serverId)
     this.setState({
-      formatedContent:fileId.content
+      formatedContent: fileId.content
     })
-    console.log('File added', fileId.id);
-    
+    console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
+
 
   }
 
-  handleFileChoosen(file){
+  handleFileChoosen(file) {
     this.fileReader = new FileReader();
 
     this.fileReader.onload = (e) => {
       const formattedText = this.fileReader.result;
 
       console.log(formattedText)
-      
+
       this.setState({
-        content:formattedText,
-        show:true
+        content: formattedText,
+        show: true
       })
     }
     this.fileReader.readAsText(file)
 
-    
+
   }
 
-  showContent(){
-    if(this.state.content!=''){
-      return(
+  showContent() {
+    if (this.state.content != '') {
+      return (
         <div>
-          <h4 style={{marginLeft:'150px'}}>Input File Content</h4>
-          <hr className="col mb-3"/>
+          <h4 style={{ marginLeft: '150px' }}>Input File Content</h4>
+          <hr className="col mb-3" />
           <Highlight language="java">
-          {this.state.content}
+            {this.state.content}
           </Highlight>
         </div>
       )
     }
   }
 
-  showFormatedContent(){
-    if(this.state.formatedContent!=''){
-      return(
+  showFormatedContent() {
+    if (this.state.formatedContent != '') {
+      return (
         <div>
-          <h4 style={{marginLeft:'150px'}}>Formated File Content</h4>
-          <hr className="col mb-3"/>
+          <h4 style={{ marginLeft: '150px' }}>Formated File Content</h4>
+          <hr className="col mb-3" />
           <Highlight language="java">
-          {this.state.formatedContent}
+            {this.state.formatedContent}
           </Highlight>
         </div>
       )
     }
   }
 
-  clearContent(){
+  clearContent() {
     this.setState({
-      content:"",
-      formatedContent:"",
-      files:[]
+      content: "",
+      formatedContent: "",
+      files: []
     })
   }
 
 
-  
+
   render() {
-    
+
 
     return (
       <div className="App">
-        
+
         <FilePond
           name={"file"}
           files={this.state.files}
@@ -115,12 +115,12 @@ class FilePondUploader extends Component {
             // Set currently active file objects to this.state
             this.setState({
               files: fileItems.map(fileItem => fileItem.file)
-            },()=>{
-              if(this.state.files.length>0)
+            }, () => {
+              if (this.state.files.length > 0)
                 this.handleFileChoosen(fileItems[0].file)
             });
 
-            
+
           }}
           onremovefile={this.clearContent.bind(this)}
         />
