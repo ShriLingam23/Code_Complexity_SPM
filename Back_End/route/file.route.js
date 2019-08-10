@@ -20,7 +20,7 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
 
     //data contains buffer type
     var data=fs.readFileSync(req.file.path);
-    console.log(data)
+    // console.log(data)
 
     //currentData contains string data
     var currentData = data.toString();
