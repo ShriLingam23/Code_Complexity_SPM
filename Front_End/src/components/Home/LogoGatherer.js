@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import TweenOne, { TweenOneGroup } from 'rc-tween-one';
@@ -169,6 +169,13 @@ class LogoGather extends React.Component {
     return (
       <div className="logo-gather-demo-wrapper">
         <canvas id="canvas" />
+        <div class="hero">
+          <hgroup>
+            <h1 className="text-danger">We are creative</h1>
+            <h3 >Because we are from <b>SLIIT</b></h3>
+          </hgroup>
+          <button class="btn btn-hero btn-lg" role="button">Visit SLIIT!!!</button>
+        </div>
         <TweenOne
           animation={this.state.boxAnim}
           className="right-side blur"

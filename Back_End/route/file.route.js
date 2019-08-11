@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const complexityByType = require('../Complexity_Algorithm/ComplexityByType')
-const complexityByInheritance = require('../Complexity_Algorithm/ComplexityByInheritance')
+const prettier = require("prettier");
 
+const complexityByType = require('../Complexity_Algorithm/ComplexityByType')
+const complexityBySize = require('../Complexity_Algorithm/ComplexityBySize')
+const ComplexityByNested = require('../Complexity_Algorithm/ComplexityByNested')
+const ComplexityByInheritance = require('../Complexity_Algorithm/ComplexityByInheritance')
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -16,26 +19,33 @@ const upload = multer({ storage: storage });
 
 //Create a new Course
 router.post("/uploadfile", upload.single("file"), function (req, res, next) {
-    
+
     // console.log(req.file)
 
     //data contains buffer type
-    var data=fs.readFileSync(req.file.path);
-    console.log(data)
+    var data = fs.readFileSync(req.file.path);
+    // console.log(data)
 
     //currentData contains string data
     var currentData = data.toString();
     console.log(currentData)
 
-    //Each line into array
-    var lineArr = currentData.split(/(?:\r\n|\r|\n)/g);
+    //Indentating properly using Prettier
+    const formattedText = prettier.format(currentData, {
+        parser: "java",
+        tabWidth: 2
+    });
 
-    complexityByType(lineArr)
+    //Each line into array
+    var lineArr = formattedText.split(/(?:\r\n|\r|\n)/g);
+
+    let cs = complexityBySize(lineArr)
+    let ctc = complexityByType(lineArr)
+    let cnc = ComplexityByNested(lineArr)
+    let ci = ComplexityByInheritance(lineArr)
     // console.log(complexityByType(lineArr) )
 
-   complexityByInheritance(lineArr)
-
-    res.send({ id: "Added" });
+    res.send({ id: "Added", content: formattedText, cs, ctc, cnc, ci });
 })
 
 
