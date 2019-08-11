@@ -1,6 +1,8 @@
 
 var complexityByType = function(lineArr){
 
+
+
     var ctc_arr =[];
 
     for(i=0;i<lineArr.length;i++){
@@ -53,6 +55,7 @@ var complexityByType = function(lineArr){
 
     // return ctc_arr;
     console.log(ctc_arr,ctc_arr.length)
+
 
 } 
 

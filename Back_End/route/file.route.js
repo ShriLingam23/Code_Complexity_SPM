@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const complexityByType = require('../Complexity_Algorithm/ComplexityByType')
+const complexityByInheritance = require('../Complexity_Algorithm/ComplexityByInheritance')
+
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -30,6 +32,8 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
 
     complexityByType(lineArr)
     // console.log(complexityByType(lineArr) )
+
+   complexityByInheritance(lineArr)
 
     res.send({ id: "Added" });
 })
