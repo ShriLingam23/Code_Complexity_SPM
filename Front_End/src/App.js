@@ -19,7 +19,7 @@ function App() {
           <div className="row">
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div className="page-caption">
-                <h1 className="page-title"><big>Code Complexity Measeurer</big></h1>
+                <h1 className="page-title"><big>Code Complexity Measurer</big></h1>
               </div>
             </div>
           </div>
@@ -38,8 +38,8 @@ function App() {
                   <div className="jumbotron">
                   <LogoGather/>
                   <h1 class="display-4">Hello, world!</h1>
-                  <h3 class="">All about Code Complexity Measurement.<br/></h3>
-                  <p>We share our knowledge on Demonstartion<br/> Our approach is very simple: we define your problem and give the best solution. </p>
+                  <h3 class="">Here this is all about Code Complexity Measurement.<br/></h3>
+                  <p>We share our knowledge through Demonstartion<br/> Our approach is very simple: we define your problem and give the best solution. </p>
                   </div>
                   <h4 style={{color:'Orange'}}>File Browse or Drag & Drop Option</h4><br/>
                   <FilePondUploader/>

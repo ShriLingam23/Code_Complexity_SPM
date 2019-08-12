@@ -15,7 +15,7 @@ class TinyEditor extends Component {
                 <Editor
                     
                     apiKey="z6kgjxy5fm9stncaajjw4dosfureruvf5lac2bnk54lt6j20"
-                    //initialValue="<p>This is the initial content of the editor</p>"
+                    initialValue="<h3>This is Feature will be Available for next Sprint</h3>"
                     init={{
                         height: "500px",
                         selector: 'textarea',
