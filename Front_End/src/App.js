@@ -44,14 +44,17 @@ function App() {
                   <h4 style={{color:'Orange'}}>File Browse or Drag & Drop Option</h4><br/>
                   <FilePondUploader/>
                   <hr/>
-                  <br/>
-                  <h4 style={{color:'green'}}>File Picker Option</h4>
-                  <TinyEditor/>
+
+                  {/* <h4 style={{color:'green'}}>File Picker Option</h4> */}
+                  {/* Text Editor */}
+                  {/* <TinyEditor/> */}
+
+
                   {/* <hr/> */}
                   {/* <h4>File Picker Option</h4> */}
                   {/* <FilePicker /> */}
+
                 </div>
-                {/* <!-- /.section-title --> */}
               </div>
             </div>
           </div>

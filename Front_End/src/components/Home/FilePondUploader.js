@@ -7,6 +7,9 @@ import Highlight from 'react-highlight'
 import 'highlight.js/styles/github.css'
 import TableDisplay from './TableDisplay';
 
+import Pie_Dragable from '../Data_Visualization/Pie_Dragable';
+import ReChart_Bar from '../Data_Visualization/ReChart_Bar';
+
 
 class FilePondUploader extends Component {
 
@@ -16,6 +19,7 @@ class FilePondUploader extends Component {
     this.state = {
       files: [],
       content: '',
+      showVisualData:false,
       formatedContent: '',
       Cs:[],
       Ctc:[],
@@ -27,7 +31,8 @@ class FilePondUploader extends Component {
     this.handleFileChoosen = this.handleFileChoosen.bind(this);
     this.showContent = this.showContent.bind(this);
     this.showFormatedContent = this.showFormatedContent.bind(this);
-
+    this.ShowVisual = this.ShowVisual.bind(this);
+    this.changeVisual = this.changeVisual.bind(this);
   }
 
   handleInit() {
@@ -84,6 +89,38 @@ class FilePondUploader extends Component {
     }
   }
 
+  changeVisual(){
+    this.setState({showVisualData:!this.state.showVisualData})
+  }
+
+  ShowVisual(){
+    if(this.state.showVisualData){
+      return(
+      <div style={{marginLeft:'-100px'}}>
+        {/* <Reversed_BarChart 
+          Cs={this.state.Cs}
+          Ctc={this.state.Ctc}
+          Cnc={this.state.Cnc}
+          Ci={this.state.Ci}
+        /> */}
+
+        <Pie_Dragable 
+          Cs={this.state.Cs}
+          Ctc={this.state.Ctc}
+          Cnc={this.state.Cnc}
+          Ci={this.state.Ci}
+        />
+
+        <ReChart_Bar 
+          Cs={this.state.Cs}
+          Ctc={this.state.Ctc}
+          Cnc={this.state.Cnc}
+          Ci={this.state.Ci}
+        />
+      </div>)
+    }
+  }
+ 
   showFormatedContent() {
     if (this.state.formatedContent != '') {
       return (
@@ -95,6 +132,17 @@ class FilePondUploader extends Component {
             Ctc={this.state.Ctc}
             Cnc={this.state.Cnc}
             Ci={this.state.Ci}/>
+
+          {/* <input type="button" className="success" onClick={this.changeVisual} value="Data Visualization" /> */}
+          <input 
+            type="button" 
+            value="Data Visualization" 
+            variant="contained" 
+            color="secondary" 
+            className="btn btn-success" 
+            onClick={this.changeVisual}/>
+          {this.ShowVisual()}
+
           <h4 style={{ marginLeft: '350px' }}>Formated File Content</h4>
           <hr className="col mb-3" />
           <Highlight language="java">
