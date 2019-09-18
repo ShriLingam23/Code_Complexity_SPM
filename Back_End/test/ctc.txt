@@ -1,0 +1,50 @@
+public class Spm {
+
+	public static void main(String args[]) {
+		String path = "C:\\Users\\Vithu\\eclipse-workspace\\testpack1\\src\\testpack1\\test.java";
+		String line;
+		int ctc=0;
+		
+		Scanner scanner = readFile(path);
+		
+		if(scanner != null) {
+			while(scanner.hasNextLine()) {
+				line = scanner.nextLine();
+				
+				if(line.contains("if")) {
+					ctc++;
+					if(line.contains("&") || line.contains("|")) {
+						char[] ch = line.toCharArray();
+						for(int i=0 ; i<ch.length-1;i++) {
+							if(ch[i]=='&' || ch[i]=='|') {
+								if(ch[i+1]=='&' || ch[i]=='|') {
+									ctc++;
+									i++;
+								} else {
+									ctc++;
+								}
+							}
+						}
+					}
+				} else if(line.contains("for") || line.contains("while")) {
+					ctc+=2;
+				} 
+			}
+			System.out.println(ctc);
+		}
+	}
+	
+	public static Scanner readFile(String path) {
+		try {
+			File file = new File(path);
+			Scanner scanner = new Scanner(file);
+			return scanner;
+			
+		} catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
+		
+	}
+	
+}
