@@ -26,10 +26,10 @@ for (let i = 0; i < resultArr.length; i++) {
 
 //Test case :1
 describe('Correct Complexity By Type', function () {
-  describe('#indexOf()', function () {
+  describe('#complexityByType()', function () {
     it('should return -1 when the value is not present', function () {
 
-      assert.equal(sum, 20);
+      assert.equal(sum, 15);
     });
   });
 });
