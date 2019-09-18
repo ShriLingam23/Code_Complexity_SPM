@@ -10,7 +10,7 @@ var complexityByNested = function (lineArr) {
 
         if (lineArr[i].includes("if")) {
             count++;
-            console.log(count)
+            // console.log(count)
 
             if (lineArr[i].includes("if") || lineArr[i].includes("for")) {
                 var ch = lineArr[i].split('');
@@ -28,13 +28,13 @@ var complexityByNested = function (lineArr) {
                         }
                     }
                 }
-                console.log(count)
+                // console.log(count)
             }
         }
 
         else if (lineArr[i].includes("for")) {
             count++;
-            console.log(count)
+            // console.log(count)
 
             if (lineArr[i].includes("if") || lineArr[i].includes("for")) {
                 var ch = lineArr[i].split('');
@@ -52,7 +52,7 @@ var complexityByNested = function (lineArr) {
                         }
                     }
                 }
-                console.log(count)
+                // console.log(count)
             }
         }
 
@@ -73,14 +73,14 @@ var complexityByNested = function (lineArr) {
                         }
                     }
                 }
-                console.log(count)
+                // console.log(count)
             }
         }
         ctc_arr.push(count)
 
     }
 
-    console.log("Complexity By Nested", ctc_arr, ctc_arr.length)
+    // console.log("Complexity By Nested", ctc_arr, ctc_arr.length)
     return ctc_arr;
 
 }

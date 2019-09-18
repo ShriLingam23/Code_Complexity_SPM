@@ -7,6 +7,7 @@ const complexityByType = require('../Complexity_Algorithm/ComplexityByType')
 const complexityBySize = require('../Complexity_Algorithm/ComplexityBySize')
 const ComplexityByNested = require('../Complexity_Algorithm/ComplexityByNested')
 const ComplexityByInheritance = require('../Complexity_Algorithm/ComplexityByInheritance')
+const ComplexityByRecursion = require('../Complexity_Algorithm/ComplexityByRecursion')
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -28,7 +29,7 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
 
     //currentData contains string data
     var currentData = data.toString();
-    console.log(currentData)
+    // console.log(currentData)
 
     //Indentating properly using Prettier
     const formattedText = prettier.format(currentData, {
@@ -43,9 +44,10 @@ router.post("/uploadfile", upload.single("file"), function (req, res, next) {
     let ctc = complexityByType(lineArr)
     let cnc = ComplexityByNested(lineArr)
     let ci = ComplexityByInheritance(lineArr)
+    let cr = ComplexityByRecursion(lineArr)
     // console.log(complexityByType(lineArr) )
 
-    res.send({ id: "Added", content: formattedText, cs, ctc, cnc, ci });
+    res.send({ id: "Added", content: formattedText, cs, ctc, cnc, ci ,cr});
 })
 
 

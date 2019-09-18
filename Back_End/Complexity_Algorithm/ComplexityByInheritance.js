@@ -1,7 +1,7 @@
 
 var complexityByInheritance = function (lineArr) {
     //check
-    console.log("Start inheritance check");
+    // console.log("Start inheritance check");
 
     var ci_arr = [];
     var newCount;
@@ -13,8 +13,8 @@ var complexityByInheritance = function (lineArr) {
 
             var cp1 = ComInheritance(i, lineArr);
             newCount = cp1 + count;
-            console.log("count at " + i)
-            console.log(newCount)
+            // console.log("count at " + i)
+            // console.log(newCount)
 
         }
         else if (lineArr[i].includes("catch")) {
@@ -29,15 +29,15 @@ var complexityByInheritance = function (lineArr) {
     }
 
     //check
-    console.log("before new count");
+    // console.log("before new count");
 
     //final count as complexity........
-    console.log(newCount);
+    // console.log(newCount);
 
     //check
-    console.log("before array");
+    // console.log("before array");
 
-    console.log("Complexity By Inheritence", ci_arr, ci_arr.length)
+    // console.log("Complexity By Inheritence", ci_arr, ci_arr.length)
     return ci_arr;
 
 }
@@ -117,12 +117,9 @@ function MethodCom(n, lineArr) {
         MC = p + count1 + 1;
 
     }
-    console.log("Complexity By Type", ctc_arr, ctc_arr.length)
+    // console.log("Complexity By Type", ctc_arr, ctc_arr.length)
     return MC;
 }
-
-
-
 
 
 module.exports = complexityByInheritance;

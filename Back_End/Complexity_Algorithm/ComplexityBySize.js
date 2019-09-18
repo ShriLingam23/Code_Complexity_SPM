@@ -47,7 +47,7 @@ var complexityBySize = function (lineArr) {
         //Increase count due to special keywords
         for (index = 0; index <= sKeywords; i++) {
             if (lineArr[i].includes(sKeywords[index])) {
-                console.log(sKeywords[index]);
+                // console.log(sKeywords[index]);
                 count += 2;
             }
         }
@@ -136,7 +136,7 @@ var complexityBySize = function (lineArr) {
         // console.log(lineArr[i])
     }
 
-    console.log("Complexity By Size", ctc_arr, ctc_arr.length)
+    // console.log("Complexity By Size", ctc_arr, ctc_arr.length)
     return ctc_arr;
 };
 module.exports = complexityBySize;

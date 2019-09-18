@@ -11,7 +11,8 @@ class TableDisplay extends Component {
             Cs: props.Cs,
             Ctc: props.Ctc,
             Cnc: props.Cnc,
-            Ci: props.Ci
+            Ci: props.Ci,
+            Cr : props.Cr
         }
     }
 
@@ -31,6 +32,7 @@ class TableDisplay extends Component {
                     <td>{this.state.Ci[i-1]}</td>
                     <td>{this.state.Ctc[i-1]+this.state.Cnc[i-1]+this.state.Ci[i-1]}</td>
                     <td>{(this.state.Ctc[i-1]+this.state.Cnc[i-1]+this.state.Ci[i-1])*this.state.Cs[i-1]}</td>
+                    <td>{(this.state.Cr[i-1]==1)?((this.state.Ctc[i-1]+this.state.Cnc[i-1]+this.state.Ci[i-1])*this.state.Cs[i-1]*2):"-"}</td>
                 </tr>
             )
         })
@@ -58,6 +60,7 @@ class TableDisplay extends Component {
                                     <th class="col-md-2">Ci</th>
                                     <th class="col-md-2">Tw</th>
                                     <th class="col-md-2">Cps</th>
+                                    <th class="col-md-2">Cr</th>
                                 </tr>
                             </thead>
                             <tbody>

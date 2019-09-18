@@ -26,7 +26,8 @@ class FilePondUploader extends Component {
       Cs: [],
       Ctc: [],
       Cnc: [],
-      Ci: []
+      Ci: [],
+      Cr:[]
 
     };
 
@@ -55,7 +56,8 @@ class FilePondUploader extends Component {
       Cs: fileId.cs,
       Ctc: fileId.ctc,
       Cnc: fileId.cnc,
-      Ci: fileId.ci
+      Ci: fileId.ci,
+      Cr : fileId.cr
     })
     // console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
 
@@ -135,7 +137,7 @@ class FilePondUploader extends Component {
   }
 
   ShowVisual() {
-    if (this.state.showVisualData) {
+    if (this.state.formatedContent != '' && this.state.showVisualData) {
       return (
         <div style={{ marginLeft: '-100px' }}>
           {/* <Reversed_BarChart 
@@ -187,7 +189,8 @@ class FilePondUploader extends Component {
             Cs={this.state.Cs}
             Ctc={this.state.Ctc}
             Cnc={this.state.Cnc}
-            Ci={this.state.Ci} />
+            Ci={this.state.Ci}
+            Cr={this.state.Cr} />
 
         </div>
       )
