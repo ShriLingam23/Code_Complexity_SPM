@@ -91,7 +91,7 @@ class FilePondUploader extends Component {
             {this.state.content}
           </Highlight>
 
-          <div className="row" style={{marginLeft:'50px'}}>
+          <div className="row" style={{marginLeft:'60px'}}>
             <div className="col md-4">
               <input
                 type="button"

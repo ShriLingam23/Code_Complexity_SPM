@@ -32,7 +32,7 @@ class Pie_Dragable extends Component {
             "complexity": this.state.Ci.reduce((a, b) => a + b, 0)
         }, {
             "category": "Complexity_By_Size",
-            "complexity": this.state.Cs.reduce((a, b) => a + b, 0)
+            "complexity": this.state.Cs.slice(0,this.state.Ci.length).reduce((a, b) => a + b, 0)
         }, {
             "category": "Complexity_By_Nested",
             "complexity": this.state.Cnc.reduce((a, b) => a + b, 0)
