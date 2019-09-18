@@ -86,7 +86,7 @@ var complexityByType = function (lineArr) {
 
     }
 
-    console.log("Complexity By Type", ctc_arr, ctc_arr.length)
+    //console.log("Complexity By Type", ctc_arr, ctc_arr.length)
     return ctc_arr;
 
 }

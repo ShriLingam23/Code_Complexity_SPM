@@ -1,43 +1,45 @@
-// const prettier = require("prettier");
-// const fs = require('fs');
-
+const prettier = require("prettier");
+const fs = require('fs');
 var assert = require('assert');
 
-// var data = fs.readFileSync('./Main.java');
+const complexityByType = require('../Complexity_Algorithm/ComplexityByType');
 
-// fs.readFile('./Main.java', function read(err, data) {
-//     if (err) {
-//         throw err;
-//     }
-//     content = data;
+//Read from the file
+var data = fs.readFileSync('./test/Main.java', 'utf8');
 
-//     // Invoke the next step here however you like
-//     console.log(content);   // Put all of the code here (not the best solution)
-//     processFile();          // Or put the next step in a function and invoke it
-// });
+//Format according to the Syntax
+const formattedText = prettier.format(data, {
+  parser: "java",
+  tabWidth: 2
+});
+console.log(formattedText)
 
+var lineArr = formattedText.split(/(?:\r\n|\r|\n)/g);
+//console.log(complexityByType(lineArr))
 
-// var currentData = data.toString();
+let resultArr = complexityByType(lineArr);
 
-// const formattedText = prettier.format(currentData, {
-//     parser: "java",
-//     tabWidth: 2
-// });
+var sum = 0;
+for (let i = 0; i < resultArr.length; i++) {
+  sum += resultArr[i];
+}
 
-// var lineArr = formattedText.split(/(?:\r\n|\r|\n)/g);
+//Test case :1
+describe('Correct Complexity By Type', function () {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
+      assert.equal(sum, 20);
+    });
+  });
+});
+
+//Test Case :2
+describe('Array', function () {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
       assert.equal([1, 2, 3].indexOf(4), -1);
     });
   });
 });
 
-// describe('Correct Complexity By Type', function() {
-//     describe('#indexOf()', function() {
-//       it('should return -1 when the value is not present', function() {
-//         assert.equal(complexityByType(lineArr).reduce((a, b) => a + b, 0), 20);
-//       });
-//     });
-//   });
