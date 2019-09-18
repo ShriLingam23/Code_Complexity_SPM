@@ -19,12 +19,14 @@ class FilePondUploader extends Component {
     this.state = {
       files: [],
       content: '',
-      showVisualData:false,
+      showVisualData: false,
+      showFormatedData: false,
+      showAnalysisData: false,
       formatedContent: '',
-      Cs:[],
-      Ctc:[],
-      Cnc:[],
-      Ci:[]
+      Cs: [],
+      Ctc: [],
+      Cnc: [],
+      Ci: []
 
     };
 
@@ -32,7 +34,10 @@ class FilePondUploader extends Component {
     this.showContent = this.showContent.bind(this);
     this.showFormatedContent = this.showFormatedContent.bind(this);
     this.ShowVisual = this.ShowVisual.bind(this);
+    this.showAnalysis = this.showAnalysis.bind(this);
+    this.changeFormatted = this.changeFormatted.bind(this);
     this.changeVisual = this.changeVisual.bind(this);
+    this.changeAnalysis = this.changeAnalysis.bind(this);
   }
 
   handleInit() {
@@ -47,10 +52,10 @@ class FilePondUploader extends Component {
     const fileId = JSON.parse(file.serverId)
     this.setState({
       formatedContent: fileId.content,
-      Cs:fileId.cs,
-      Ctc:fileId.ctc, 
-      Cnc:fileId.cnc, 
-      Ci:fileId.ci
+      Cs: fileId.cs,
+      Ctc: fileId.ctc,
+      Cnc: fileId.cnc,
+      Ci: fileId.ci
     })
     // console.log('File added', fileId.cs, fileId.ctc, fileId.cnc, fileId.ci);
 
@@ -75,6 +80,7 @@ class FilePondUploader extends Component {
 
   }
 
+
   showContent() {
     if (this.state.content != '') {
       return (
@@ -84,66 +90,84 @@ class FilePondUploader extends Component {
           <Highlight language="java">
             {this.state.content}
           </Highlight>
+
+          <div className="row" style={{marginLeft:'50px'}}>
+            <div className="col md-4">
+              <input
+                type="button"
+                value="Formatted Content"
+                color="secondary"
+                className="btn btn-success"
+                onClick={this.changeFormatted} />
+
+            </div>
+            <div className="col md-4">
+              <input
+                type="button"
+                value="Complexity Analysis"
+                className="btn btn-danger"
+                onClick={this.changeAnalysis} />
+
+            </div>
+            <div className="col md-4">
+              <input
+                type="button"
+                value="Data Visualization"
+                className="btn btn-warning"
+                onClick={this.changeVisual} />
+            </div>
+          </div>
         </div>
       )
     }
   }
 
-  changeVisual(){
-    this.setState({showVisualData:!this.state.showVisualData})
+  changeVisual() {
+    this.setState({ showVisualData: !this.state.showVisualData })
   }
 
-  ShowVisual(){
-    if(this.state.showVisualData){
-      return(
-      <div style={{marginLeft:'-100px'}}>
-        {/* <Reversed_BarChart 
+  changeFormatted() {
+    this.setState({ showFormatedData: !this.state.showFormatedData })
+  }
+
+  changeAnalysis() {
+    this.setState({ showAnalysisData: !this.state.showAnalysisData })
+  }
+
+  ShowVisual() {
+    if (this.state.showVisualData) {
+      return (
+        <div style={{ marginLeft: '-100px' }}>
+          {/* <Reversed_BarChart 
           Cs={this.state.Cs}
           Ctc={this.state.Ctc}
           Cnc={this.state.Cnc}
           Ci={this.state.Ci}
         /> */}
 
-        <Pie_Dragable 
-          Cs={this.state.Cs}
-          Ctc={this.state.Ctc}
-          Cnc={this.state.Cnc}
-          Ci={this.state.Ci}
-        />
-
-        <ReChart_Bar 
-          Cs={this.state.Cs}
-          Ctc={this.state.Ctc}
-          Cnc={this.state.Cnc}
-          Ci={this.state.Ci}
-        />
-      </div>)
-    }
-  }
- 
-  showFormatedContent() {
-    if (this.state.formatedContent != '') {
-      return (
-        <div>
-          
-          <TableDisplay 
-            content={this.state.formatedContent} 
+          <Pie_Dragable
             Cs={this.state.Cs}
             Ctc={this.state.Ctc}
             Cnc={this.state.Cnc}
-            Ci={this.state.Ci}/>
+            Ci={this.state.Ci}
+          />
 
-          {/* <input type="button" className="success" onClick={this.changeVisual} value="Data Visualization" /> */}
-          <input 
-            type="button" 
-            value="Data Visualization" 
-            variant="contained" 
-            color="secondary" 
-            className="btn btn-success" 
-            onClick={this.changeVisual}/>
-          {this.ShowVisual()}
+          <ReChart_Bar
+            Cs={this.state.Cs}
+            Ctc={this.state.Ctc}
+            Cnc={this.state.Cnc}
+            Ci={this.state.Ci}
+          />
+        </div>)
+    }
+  }
 
-          <h4 style={{ marginLeft: '350px' }}>Formated File Content</h4>
+  showFormatedContent() {
+    if (this.state.formatedContent != '' && this.state.showFormatedData) {
+      return (
+        <div>
+          <h4 style={{ color: 'Orange', marginLeft: '350px', marginTop: '50px' }}>Formated File Content</h4><br />
+
           <hr className="col mb-3" />
           <Highlight language="java">
             {this.state.formatedContent}
@@ -153,6 +177,24 @@ class FilePondUploader extends Component {
     }
   }
 
+  showAnalysis() {
+    if (this.state.formatedContent != '' && this.state.showAnalysisData) {
+      return (
+        <div>
+
+          <TableDisplay
+            content={this.state.formatedContent}
+            Cs={this.state.Cs}
+            Ctc={this.state.Ctc}
+            Cnc={this.state.Cnc}
+            Ci={this.state.Ci} />
+
+        </div>
+      )
+    }
+
+  }
+
   clearContent() {
     this.setState({
       content: "",
@@ -160,8 +202,6 @@ class FilePondUploader extends Component {
       files: []
     })
   }
-
-
 
   render() {
 
@@ -191,6 +231,10 @@ class FilePondUploader extends Component {
         {this.showContent()}
 
         {this.showFormatedContent()}
+
+        {this.ShowVisual()}
+
+        {this.showAnalysis()}
       </div>
     );
   }
